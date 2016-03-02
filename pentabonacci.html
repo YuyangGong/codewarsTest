@@ -1,0 +1,42 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars六级题目：pentabonacci
+ *http://www.codewars.com/kata/55c9172ee4bb15af9000005d/train/javascript
+ *一个类似斐波那契的数列，每一项是前五项的和；
+ *eg:0 1 1 2 4 8 16 31...
+ *完成函数功能：给定参数n返回此数列n项及以下中奇数出现的次数（重复出现的数字只算一次，但因为其递增的性质，实际上只有1会出现俩次）.
+ *countOddPentaFib(5) -----> 1 # 因为5及以下的项为: 0, 1, 1, 2, 4, 8 (只有 1 一个奇数，所以返回“次数”：1)
+ */
+//第一次尝试，错误。因为当n过大的时候，数值过大，导致计算不正确；
+function countOddPentaFib(n){
+	var arr=[0,1,1,2,4],count=0;
+	while(arr.length<=n){
+		arr.push(arr.slice(-5).reduce((s,v)=>s+v,0));  
+	}
+	console.log(arr)
+    for(var i=0;i<=n;i++){
+    	if(arr[i]%2===1)count++;
+    }
+    return n>1?count-1:count;
+}
+//经过观察发现，每六项中前俩项会出现奇数，其余为偶数，故设计下列算法;通过测试。
+function countOddPentaFib(n){
+	var num=Math.floor(n/6)*2+(n%6>0?n%6>1?2:1:0);
+	return num>2?num-1:num;
+}
+//codewars 其他网友的优秀算法(@g964):
+//用位运算~~代替Math.floor方法，因为在位上面直接操作所以速度更快，而且更简洁明了；
+function countOddPentaFib(n) {
+  return  ~~((n - 1) / 6) + ~~((n - 2) / 6) + 1
+}
+//收到上面算法的启发，所以有了下面的新算法；
+//通过num|0的方式也可以实现Math.floor的效果；
+function countOddPentaFib(n) {
+  return  (((n - 1) / 6)|0) + (((n - 2) / 6)|0) + 1
+}
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars六级题目：Build a pile of Cubes
+ *http://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript
+ */
+//从1的立方开始加上去，直到总和大于等于给出的m跳出循环，然后对比m和sum是否相等，相等就放回num，不相等就返回-1;
+function findNb(m){
+  var num=0,sum=0;
+  while(sum<m){
+    num++;
+    sum+=Math.pow(num,3);
+  }
+  return sum===m?num:-1;
+}
+//codewars网友最佳回答（@hencethus,@Fantom1991）
+//从1的立方开始减，知道m小于等于0时跳出循环，然后对比m是否为0，如果正好为0放回n，如果不为0放回-1；
+//与我的算法相比，直接在m上操作，不需要多var一个sum,并且**幂的方式更简洁；
+//比较可惜的是，**是ES6的新语法，目前（2016/03/02）的大多数浏览器并不支持**。
+function findNb(m) {
+  var n = 0
+  while (m > 0) m -= ++n**3
+  return m ? -1 : n
+}
+console.log(2**2)
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars六级题目：Group Repeating Fractions
+ *http://www.codewars.com/kata/group-repeating-fractions
+ *考验正则表达式的使用；
+ */
+function repeatingFractions(numerator, denominator) {
+   var arr=(numerator/denominator+'').split('.');
+   return arr.length===2?arr[0]+'.'+arr[1].replace(/(\d)\1+/g,'($1)'):arr[0];
+}
+</script>
+</head>
+<body>
+</body>
+</html>

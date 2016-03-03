@@ -1,0 +1,23 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars六级题目：JoJo's Bizarre Kata
+ *http://www.codewars.com/kata/jojos-bizarre-kata
+ 题目要求：
+ 检查输入的名字是否符合JOJO名字规范，由"firstname surname"组成。具体要求如下：
+   1、你的firstname和surname都由‘Jo’开头；
+   2、你的firstname由‘JO’开头，且surname由‘JO’结尾；
+   3、你的firstname surname都由‘Gio’开头；
+   4、输入的字符串参数可能不仅仅是'firstname surname'的形式组成，如果不是就是非法的输入；
+   5、大小写可以无视；
+ */
+//我的答案：(Ps:这道题很简单，只是单纯的考察正则表达式的使用)
+function isJojo(name){
+	var regex=/^(Jo\w+ Jo\w+|gio\w+ gio\w+|Jo\w+ \w+jo)$/i
+    return regex.test(name);
+}
+</script>
+</head>
+<body>
+</body>
+</html>

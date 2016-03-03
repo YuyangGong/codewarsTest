@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars六级题目：Same Array?
+ *http://www.codewars.com/kata/same-array
+ *比较二维数组的数组元素是否相等；
+ */
+//我的方法，不够优雅。
+function same(aArr, bArr)
+{
+  if(!aArr.length&&!bArr.length)return true;
+  else if(aArr.length!==bArr.length)return false;
+  else{
+    sortArr(aArr);
+    sortAgain(aArr);
+    sortArr(bArr);
+    sortAgain(bArr);
+    for(var i=0;i<aArr.length;i++){
+      if(aArr[i][0]!==bArr[i][0]||aArr[i][1]!==bArr[i][1])return false;
+    }
+  }
+  return true;
+}
+function sortArr(arr){   //对内数组的排序
+  for(var i=0;i<arr.length;i++)arr[i].sort();
+}
+function sortAgain(arr){  //对外数组的排序
+  arr.sort(function(a,b){
+    var num=a['0']-b['0'];
+    if(num===0){
+      num=a['1']-b['1'];
+    }
+    return num;
+  })
+}  
+//codewars最高票网友的回答（@Balkoth,@alexisinwork）:
+//看过去很优雅，可是存在bug，如当
+//a = [[3, 5], [4, 5]];
+//b = [[3, 4], [5, 5]];
+//理应返回false,其却返回true;
+//因为其先将内部数组都合并为一个数组再排序，然后转化成字符串比较；
+function same(aArr, bArr){
+  return [].concat.apply([],aArr).sort().toString() === [].concat.apply([],bArr).sort().toString();
+}
+</script>
+</head>
+<body>
+</body>
+</html>

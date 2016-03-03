@@ -1,0 +1,38 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars六级题目：Alternating Loops
+ *http://www.codewars.com/kata/alternating-loops
+ *将多个传入的数组的数组元素交替排列成为一个数组
+ *如：combine(['a', 'b', 'c'], [1, 2, 3, 4, 5], [6, 7], [8]) == ['a', 1, 6, 8, 'b', 2, 7, 'c', 3, 4, 5]
+ */
+ //我的方法，通过一个对象来储存每个内部数组各个索引的数组元素；
+function combine(){
+  var obj={};
+  for(var i=0;i<arguments.length;i++){
+    for(var j=0;j<arguments[i].length;j++){
+      obj[j]=obj[j]?obj[j].concat(arguments[i][j]):[arguments[i][j]];
+    }
+  }
+  var arr=[];
+  for(var key in obj){
+    arr=arr.concat(obj[key]);
+  }
+  return arr;
+}
+//网友的优秀算法（@ooflorent）
+function combine(...arrs) {
+  var max = arrs.reduce((n, arr) => Math.max(n, arr.length), 0)
+  var res = []
+  for (var i = 0; i < max; i++) {
+    for (var arr of arrs) {
+      if (i in arr) res.push(arr[i])
+    }
+  }
+  return res
+}
+</script>
+</head>
+<body>
+</body>
+</html>

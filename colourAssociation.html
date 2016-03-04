@@ -1,0 +1,18 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Codewars 七级题目：Colour Association
+ *http://www.codewars.com/kata/56d6b7e43e8186c228000637/solutions/javascript
+ */
+//我的答案
+function colourAssociation(array){
+  return array.map(function(x){var obj={};obj[x[0]]=x[1];return obj;});
+}
+//codewars网友最佳回答（@Balkoth,surtich)
+const colourAssociation = array => array.map(([colour, association]) => ({[colour]:association}))
+//变量解构
+</script>
+</head>
+<body>
+</body>
+</html>

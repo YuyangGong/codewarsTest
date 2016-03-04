@@ -1,0 +1,29 @@
+<html>
+<head>
+<script type="text/javascript">
+/*Javascript from the Inside #1 : Map
+ *http://www.codewars.com/kata/558ccca75f511f2b0d0000f7/solutions/javascript
+ *要求用自己的方法，实现JS内置的Array.prototype.map方法
+ */
+//我的方法
+Array.prototype.map=function(func,obj){
+  var arr=[];
+  arr.length=this.length;
+  for(var i in this){
+    if(isNaN(Number(i)))continue;
+    arr[i]=(func.apply(obj,[this[i],Number(i),this]));
+  }
+  return arr;
+}
+//codewars高票网友答案：(@Azuaron)
+//用了内置的forEach，有点赖皮的赶脚。
+Array.prototype.map = function(fn, nThis) {
+  var newArr = this.slice();
+  this.forEach((v, i, arr) => newArr[i] = fn.apply(nThis, [v, i, arr]));
+  return newArr;
+}
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+<title>My first web</title>
+<script type="text/javascript">
+function convertTemp(temp, from_scale, to_scale){  //温度转换器
+  var toCel={
+    'C':a=>a,
+    'F':a=>(a-32)*5/9,
+    'K':a=>a-273.15,
+    'R':a=>(a-491.67)*5/9,
+    'De':a=>100-a*2/3,
+    'N':a=>a*100/33,
+    'Re':a=>a*5/4,
+    'Ro':a=>(a-7.5)*40/21
+  }
+  var fromCel={
+    'C':a=>a,
+    'F':a=>a*9/5+32,
+    'K':a=>a+273.15,
+    'R':a=>a+273.15*9/5,
+    'De':a=>(100-a)*3/2,
+    'N':a=>a*33/100,
+    'Re':a=>a*4/5,
+    'Ro':a=>a*21/40+7.5
+  }
+  return Math.round(fromCel[to_scale](toCel[from_scale](temp)));
+}
+function solveQuadratic(a, b, c) {  //二次函数
+  var sqrtNum=b*b-4*a*c;
+  if(b===0&&a===0)return undefined;
+  else if(a===0){
+    return [-c/b];
+  }
+  else if(b===0&&c===0)return [0]
+  else if(sqrtNum<0)return undefined
+  else if(sqrtNum===0)return [-b/2/a]
+  else if(sqrtNum>0){
+    if(c===0){
+      return [0,-b/a]
+    }
+    var num=Math.sqrt(sqrtNum),arr=[];
+    arr.push((num-b)/2/a);
+    arr.push((-num-b)/2/a);
+    return arr;
+  }
+}
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<title>My first web</title>
+<script type="text/javascript">
+ /* codewars 六级题目 Array intersect all
+  * http://www.codewars.com/kata/52a4e42ce950ed50da000748/solutions/javascript
+  */
+  //我的答案
+  //在内部循环查找，只要在一个arugments[i]中找不到则跳过这个数组元素，通过label语句联系到外部循环，可以直接在内循环跳出外循环；
+  var intersect = function () {
+  var arr=[];
+  if(!arguments.length)return arr;
+  out:
+  for(var i=0;i<arguments[0].length;i++){
+    var str=arguments[0][i];
+    for(var j=1;j<arguments.length;j++){
+      if(arguments[j].indexOf(str)===-1)continue out;
+    }
+    arr.push(str);
+  }
+  return arr;
+};
+  //codewars优秀网友答案（@KSA）:
+  var intersect = function () {
+  if (!arguments.length) return [];
+  var arr = Array.prototype.slice.call(arguments);
+  
+  return arr[0].filter(function(val, index){
+    return arr.every(function(v, i){
+      return v.indexOf(val) !== -1;
+    })    
+  });
+};
+</script>
+</head>
+<body>
+</body>
+</html>

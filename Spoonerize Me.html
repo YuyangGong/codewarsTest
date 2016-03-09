@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+<title>My first web</title>
+<script type="text/javascript">
+/* codewars七级题目 Spoonerize Me
+ *http://www.codewars.com/kata/spoonerize-me/javascript
+ */
+ //我的答案
+ function spoonerize(words) {
+    var arr=words.split(' ');
+    var first=arr[0][0];
+    var last=arr[arr.length-1][0];
+    arr[0]=last+arr[0].slice(1);
+    arr[arr.length-1]=first+arr[arr.length-1].slice(1);
+    return arr.join(' ');
+}
+ //codewars 优秀网友答案(@cave.on)：
+ const spoonerize = words => words.replace(/^(.)(.* )(.)(.*)$/, '$3$2$1$4');
+</script>
+</head>
+<body>
+</body>
+</html>
